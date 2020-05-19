@@ -2,19 +2,21 @@ var express = require("express");
 var router = express.Router();
 var mysqlConnection = require("../connection");
 router.post("/", function(req, res, next){
-   //console.log("first name = "+req.body.firstName+" last name = "+req.body.lastName);
+    
+    console.log("first name = "+req.body.firstName+" last name = "+req.body.lastName);
     res.send(req.body);
-    // mysqlConnection.query("INSERT into registeredUsers values ("+req.body.firstName+", "
-    //                       +req.body.lastName+", "
-    //                       +req.body.email+", "
-    //                       +req.body.password+")", (err, rows, fields) =>{
-    //                         if(!err){
-    //                           console.log("successfully inserted");
-    //                         }
-    //                         else{
-    //                           console.log("try again");
-    //                         }
-    //                       });
+    let stmt = 'Insert into registeredUsers(fname, lname, email, pass) VALUES(?,?,?,?)';
+    let todo=[req.body.firstName,req.body.lastName, req.body.email, req.body.password];
+    mysqlConnection.query(stmt,todo, function(err, result){
+                            if(!err){
+
+                              console.log("register successfully inserted");
+                            }
+                            else{
+                              console.log(err);
+                              console.log(" register try again");
+                            }
+                          });
 
     //mysqlConnection.query()
     //   knex.select('*')
