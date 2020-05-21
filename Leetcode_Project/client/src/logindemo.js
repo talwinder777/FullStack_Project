@@ -52,7 +52,6 @@ class Logindemo extends Component {
     //         email: e.target.email.value,
     //         password: e.target.password.value
     //     };
-            var formData =new FormData(this);
         //let data = new FormData();
         //data.append( "json", JSON.stringify( payload ));
         // formData.append('firstName', e.target.firstName.value);
@@ -61,20 +60,29 @@ class Logindemo extends Component {
         // formData.append('password', e.target.password.value);
        
         console.log(e.target.firstName.value);
-        fetch('http://localhost:9000/register' , {
-              method: "POST",
-               
-            //   headers: {
-            //   'Content-type': 'application/json'
-            //   },
-              body: formData
+        const data = {
+            firstName: e.target.firstName.value,
+            lastName: e.target.lastName.value,
+            email: e.target.email.value,
+            password: e.target.password.value
+        }
+        console.log("data = "+data);
+        fetch('http://localhost:9000/register', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
             })
-            .then((result) => {
-              console.log(result);
-              
+            .then(response => response.json())
+            .then(data => {
+            //alert("Successfully Registered");
+            var text = "Succesfully Registeref! Please Login now"
+            document.getElementById("demo").innerHTML = text;    
+            console.log('Success:', data);
             })
             .catch((error) => {
-                console.error('Error:', error);
+            console.error('Error:', error);
             });
       }
     
@@ -109,7 +117,9 @@ class Logindemo extends Component {
                         <input type="email" name = "email" placeholder="Email" />
                         <input type="password" name = "password" placeholder="Password" />
                         <button type="submit" >Sign Up</button>
+                        <p id = "demo" style = {{color: 'GREEN'}}></p>
                     </form>
+                    
                 </div>
                 <div className="form-container sign-in-container">
                     <form action="#">
