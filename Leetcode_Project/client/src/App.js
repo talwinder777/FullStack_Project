@@ -1,44 +1,28 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {
+ BrowserRouter as Router,
+ Route,
+ Switch,
+ Link,
+ Redirect
+} from "react-router-dom"
+
+import Logindemo from './logindemo'
+import Home from './Home'
+
 class App extends Component{
-
-
-constructor(props) {
-  super(props);
-  this.state = { apiResponse: "" };
-}
-
-callAPI() {
-  fetch("http://localhost:9000/register")
-      .then(res => res.text())
-      .then(res => this.setState({ apiResponse: res }));
-}
-
-componentWillMount() {
-  this.callAPI();
-}
- render() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <p className="App-intro">{this.state.apiResponse}</p>
-    </div>
-    
-  );
-}
+   render() {
+      return (
+        <Router>
+          <Switch>
+            <Route exact path = "/" component = {Home}/>
+            <Route exact path = "/Home" component = {Home}/>
+            <Route exact path = "/logindemo" component = {Logindemo}/>
+          </Switch>
+        </Router>
+      );
+  }
 }
 export default App;

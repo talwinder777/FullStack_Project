@@ -5,15 +5,35 @@
 	box-sizing: border-box;
 }
 
+	
+  
 body {
-	background: #f6f5f7;
-	display: flex;
+	
+	
+	
+	
+	
+	
+	/* font-family: 'Montserrat', sans-serif; */
+	height: 100%;
+	/* margin: -20px 0 50px; */
+}
+.myImage{
+	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
 	justify-content: center;
 	align-items: center;
+	display: flex;
 	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
-	height: 100vh;
-	margin: -20px 0 50px;
+	height: 100%;
+	background: url("Spider.jpg");
+
+    background-repeat: no-repeat;
 }
 
 h1 {
@@ -161,8 +181,8 @@ input {
 
 .overlay {
 	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: -webkit-linear-gradient(to right, #070b0f, #212d38);
+	background: linear-gradient(to right, #070b0f, #212d38);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

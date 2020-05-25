@@ -6,9 +6,11 @@ import * as serviceWorker from './serviceWorker';
 import SignUp from './SignUp'
 //import Register from './register'
 import Register from './registerModified'
+import Logindemo from './logindemo'
+import Home from './Home'
 ReactDOM.render(
   <React.StrictMode>
-    <Register />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -20,44 +20,10 @@ class Logindemo extends Component {
   
     
 
-    // reloadifSuccessful = (e) => {
-    //   e.preventDefault();
-    //   // get form data out of state
-    //   const { first_name, last_name, password, email } = this.state;
-    //   console.log("inside onsubmit");
-    //   fetch('http://localhost:9000/register', {
-    //     method: 'POST', // or 'PUT'
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     }
-        
-    //   })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     console.log('Success:', data);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
-    //     //window.location.reload(false);
-    // }
 
     onSubmit = (e) => {
         e.preventDefault();
-        // get form data out of state
-        //const { first_name, last_name, password, email } = this.state;
-    //    // var payload = {
-    //         firstName: e.target.firstName.value,
-    //         lastName: e.target.lastName.value,
-    //         email: e.target.email.value,
-    //         password: e.target.password.value
-    //     };
-        //let data = new FormData();
-        //data.append( "json", JSON.stringify( payload ));
-        // formData.append('firstName', e.target.firstName.value);
-        // formData.append('lastName', e.target.lastName.value);
-        // formData.append('email', e.target.email.value);
-        // formData.append('password', e.target.password.value);
+        
        
         console.log(e.target.firstName.value);
         const data = {
@@ -85,6 +51,46 @@ class Logindemo extends Component {
             console.error('Error:', error);
             });
       }
+
+      login = (e) => {
+        
+        e.preventDefault();
+
+        console.log(e.target.email.value);
+        const data = {
+           
+            email: e.target.email.value,
+            password: e.target.password.value
+        }
+       
+      
+        fetch('http://localhost:9000/login', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            
+            })
+            .then(response => response.json())
+            .then(data => { 
+                var text = "" 
+                if(data.valid=='True')
+                {
+                    document.getElementById("demo1").innerHTML = text;
+                    console.log('Success:', data);
+                }  
+                else{
+                    text="Email or Password doesnt match";
+            document.getElementById("demo1").innerHTML = text; 
+                    
+                }
+            
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+      }
     
     leftSlide = (e) => {
         e.preventDefault();
@@ -101,10 +107,11 @@ class Logindemo extends Component {
         return null;
     }
    // method = 'POST' action='http://localhost:9000/register'
+  // method="post" action="http://localhost:9000/login  
      render() {
          
           return (
-            <div>
+            <div className="myImage">
             
             <div className="container" id="container">
                 <div className="form-container sign-up-container">
@@ -119,17 +126,18 @@ class Logindemo extends Component {
                         <button type="submit" >Sign Up</button>
                         <p id = "demo" style = {{color: 'GREEN'}}></p>
                     </form>
-                    
+                                    
                 </div>
                 <div className="form-container sign-in-container">
-                    <form action="#">
+                    <form onSubmit={this.login}>
                         <h1>Sign in</h1>
                        
                         <span>or use your account</span>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
+                        <input type="email" name="email" placeholder="Email" />
+                        <input type="password" name="password" placeholder="Password" />
                         <a href="#">Forgot your password?</a>
-                        <button>Sign In</button>
+                        <button type='submit'>Sign In</button>
+                        <p id = "demo1" style = {{color: 'GREEN'}}></p>
                     </form>
                 </div>
                 <div className="overlay-container">
@@ -153,5 +161,5 @@ class Logindemo extends Component {
 
         
 }
-  /*<div ref={el => (this.instance = el)} />*/
+ 
 export default Logindemo;
