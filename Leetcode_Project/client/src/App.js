@@ -11,7 +11,7 @@ import {
 
 import Logindemo from './logindemo'
 import Home from './Home'
-
+import UserHome from './UserHome'
 class App extends Component{
    render() {
       return (
@@ -20,6 +20,7 @@ class App extends Component{
             <Route exact path = "/" component = {Home}/>
             <Route exact path = "/Home" component = {Home}/>
             <Route exact path = "/logindemo" component = {Logindemo}/>
+            <Route exact path = "/UserHome" component = {UserHome}/>
           </Switch>
         </Router>
       );
