@@ -1,57 +1,96 @@
 import React, {Component} from 'react';
-
+import List from './demoList'
 import './userHome.css'
+import ReactDOM from 'react-dom';
+
 class UserHome extends Component{
 
-    showData = (e) =>{
-        console.log(e.target.value);
-         document.getElementById("showProblemContent").innerHTML = '<H1>'+e.target.value+'</H1>';
-
+    constructor(props){
+        super(props);
+        this.state = {
+            list: [],
+        }
+        // this.openProblem = this.openProblem.bind(this);
     }
+     
     
-    openProblem = (e) => {
-        // e.preventDefault();
-        // console.log("signup clicked");
-        // const container = document.getElementById('container');
-        // container.classList.add("right-panel-active");
-        // return null;
-                var i
+    // openProblem = (e) => {
+    //     // e.preventDefault();
+    //     // console.log("signup clicked");
+    //     // const container = document.getElementById('container');
+    //     // container.classList.add("right-panel-active");
+    //     // return null;
+    //             var i
                   
-                    console.log("My name is Anthony");
-                    console.log(e.target.value);
+    //                 console.log("My name is Anthony");
+    //                 console.log(e.target.value);
                     
-                    var start
-                    var end
-                    var text="<ul>"
-                    if(e.target.value=='Easy')
-                    {
-                        start=0;
-                        end=100;
+    //                 var start
+    //                 var end
+    //                 var text="<ul>"
+    //                 if(e.target.value==='Easy')
+    //                 {
+    //                     start=0;
+    //                     end=100;
                        
-                    }
-                    else if(e.target.value=='Medium')
-                    {
-                        start=100;
-                        end=200;
-                    }
-                    else if(e.target.value=="Hard")
-                    {
-                        start=300;
-                        end=400;
-                    }
+    //                 }
+    //                 else if(e.target.value==='Medium')
+    //                 {
+    //                     start=100;
+    //                     end=200;
+    //                 }
+    //                 else if(e.target.value==="Hard")
+    //                 {
+    //                     start=300;
+    //                     end=400;
+    //                 }
 
-                   for (i = start; i < end; i++) {
-                           text += '<li>'+ "<button class='tablinks' value={"+i+"} onClick = {"+showData()+"}>"+i+"</button>" + '</li>';
+    //                for (i = start; i < end; i++) {
+    //                        text += '<li>'+ "<button class='tablinks' value={"+i+"} onClick = {"+{this.showData}+"}>"+i+"</button>" + '</li>';
                             
-                       }
+    //                    }
                     
-                    text +="</ul>";
-                    document.getElementById("demo").innerHTML = text;
-                    
-    }
+    //                 text +="</ul>";
 
+                   
+
+    //                 document.getElementById("demo").innerHTML = text;
+         
+                    
+    // }
+    // showData = (e) =>{
+    //     console.log(e.target.value);
+    //      document.getElementById("showProblemContent").innerHTML = '<h1>'+e.target.value+'</h1>';
+
+    // }
+
+  
+   openProblem = (e) =>{
+
+    console.log("difficulty = "+e.target.value)
     
-
+    if(e.target.value==="Easy")
+    {
+        this.state.list =  [1,2,3,4,5]
+        
+     
+       //document.getElementById("showProblemContent").innerHTML = '<h1>'+HEYYYYYYYYYY+'</h1>';
+    }
+    else if(e.target.value==="Medium")
+    {
+        this.state.list = [6,7,8,9,10]
+    }  
+    else{
+        this.state.list = [11,12,13,14,15]
+    }
+    console.log("list = "+this.state.list)
+    
+    ReactDOM.render(<List list = {this.state.list}/>, document.getElementById('walla'));
+    //    ReactDOM.render(<button className="tablinks" >Hey man</button>, document.getElementById('walla'));
+    //    ReactDOM.render(<button className="tablinks" >whats up</button>, document.getElementById('walla'));
+   }
+    
+  
     render(){
         return (
             <div>
@@ -92,60 +131,11 @@ class UserHome extends Component{
                                     <button className="tablinks" value={"Hard"} onClick={this.openProblem}>Hard</button>
                                 </div>
                         <div className="lele2">
-                            <p id="demo" className="tab"> </p>
+                           <p id = "walla"></p>
                         </div>   
              
                         </div>
-                    {/* <script>
-                        function openProblem(difficulty) {
-                            var i;
-                  
-                            console.log("My name is Anthony");
-                        
-                            
-                            var start;
-                            var end;
-                            var text='';
-                            if(difficulty=='Easy')
-                            {
-                                start=0;
-                                end=100;
-                                //    for (i = 0; i < 100; i++) {
-                                //   // text += '<li>'+ "<button class='w3-bar-item w3-button tablink'>"+i+"</button>" + '</li>';
-                                //   //                }
-                                //   //      text +="</ul>";
-                                //   // document.getElementById("demo").innerHTML = text;
-                            }
-                            else if(difficulty=='Medium')
-                            {
-                                start=100;
-                                end=200;
-                            }
-                            else if(difficulty=="Hard")
-                            {
-                                start=300;
-                                end=400;
-                            }
-
-                            for (i = start; i < end; i++) {
-                                    text += '<li>'+ "<button class='tablinks' onclick = showData("+i+")>"+i+"</button>" + '</li>';
-                                }
-                            
-                            text +="</ul>";
-                            document.getElementById("demo").innerHTML = text;
-                            
-                            };
-
-                            function showData(i){
-                                console.log(i);
-                                document.getElementById("showProblemContent").innerHTML = '<H1>'+i+'</H1>';
-                            }
-
-               
-
-                    </script> */}
                     
-            
                 <div className="carousel-container">
                     <div className="carousel-content">
                         <h2>We are professional</h2>
