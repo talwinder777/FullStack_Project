@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import SignUp from './SignUp'
+// import SignUp from './SignUp'
 //import Register from './register'
-import Register from './registerModified'
+// import Register from './registerModified'
 import Logindemo from './logindemo'
 import Home from './Home'
 ReactDOM.render(
