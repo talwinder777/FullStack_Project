@@ -10,71 +10,17 @@ class UserHome extends Component{
         this.state = {
             list: [],
         }
-        // this.openProblem = this.openProblem.bind(this);
+        
     }
      
-    
-    // openProblem = (e) => {
-    //     // e.preventDefault();
-    //     // console.log("signup clicked");
-    //     // const container = document.getElementById('container');
-    //     // container.classList.add("right-panel-active");
-    //     // return null;
-    //             var i
-                  
-    //                 console.log("My name is Anthony");
-    //                 console.log(e.target.value);
-                    
-    //                 var start
-    //                 var end
-    //                 var text="<ul>"
-    //                 if(e.target.value==='Easy')
-    //                 {
-    //                     start=0;
-    //                     end=100;
-                       
-    //                 }
-    //                 else if(e.target.value==='Medium')
-    //                 {
-    //                     start=100;
-    //                     end=200;
-    //                 }
-    //                 else if(e.target.value==="Hard")
-    //                 {
-    //                     start=300;
-    //                     end=400;
-    //                 }
-
-    //                for (i = start; i < end; i++) {
-    //                        text += '<li>'+ "<button class='tablinks' value={"+i+"} onClick = {"+{this.showData}+"}>"+i+"</button>" + '</li>';
-                            
-    //                    }
-                    
-    //                 text +="</ul>";
-
-                   
-
-    //                 document.getElementById("demo").innerHTML = text;
-         
-                    
-    // }
-    // showData = (e) =>{
-    //     console.log(e.target.value);
-    //      document.getElementById("showProblemContent").innerHTML = '<h1>'+e.target.value+'</h1>';
-
-    // }
-
-  
-   openProblem = (e) =>{
+	openProblem = (e) =>{
 
     console.log("difficulty = "+e.target.value)
     
     if(e.target.value==="Easy")
     {
         this.state.list =  [1,2,3,4,5]
-        
-     
-       //document.getElementById("showProblemContent").innerHTML = '<h1>'+HEYYYYYYYYYY+'</h1>';
+       
     }
     else if(e.target.value==="Medium")
     {
@@ -85,9 +31,9 @@ class UserHome extends Component{
     }
     console.log("list = "+this.state.list)
     
+    ReactDOM.unmountComponentAtNode(document.getElementById("walla"));
     ReactDOM.render(<List list = {this.state.list}/>, document.getElementById('walla'));
-    //    ReactDOM.render(<button className="tablinks" >Hey man</button>, document.getElementById('walla'));
-    //    ReactDOM.render(<button className="tablinks" >whats up</button>, document.getElementById('walla'));
+   
    }
     
   
