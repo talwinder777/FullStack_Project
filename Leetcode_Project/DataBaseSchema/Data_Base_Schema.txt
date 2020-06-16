@@ -1,0 +1,19 @@
+
+SQL--------------------------------------Database
+
+Tables
+
+1) Users
+	
+	UserId(AutoIncrement PrimaryKey), Fname, Lname, password, email
+
+2) Problems
+
+	ProblemsId(PrimaryKey), ProblemName, Difficulty, VideoSolutionLink
+
+3) Problems Solutions
+	
+	SolutionId(PrimaryKey), Problems.ProblemId(ForeignKey), SolutionContent
+
+4) Unsolved/ Solved Problems
+	userId, ProblemId 
